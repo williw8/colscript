@@ -85,6 +85,9 @@ APPEND_STR = '">"'
 INSERT_PREFIX = '">'
 INSERT_SUFFIX = '<"'
 
+COLUMNS_LABEL = 'Columns:'
+SCRIPT_LABEL = 'Script:'
+
 class ColScriptDialog(wx.Dialog):
 
   def __init__(self,parent,table):
@@ -113,7 +116,8 @@ class ColScriptDialog(wx.Dialog):
     hbox = wx.BoxSizer(wx.HORIZONTAL)
     hbox.AddSpacer(H_SPACER)
     x = wx.StaticText(self,wx.ID_ANY)
-    x.SetLabel("Columns: ")
+    x.SetLabel(COLUMNS_LABEL)
+    label_width = x.GetTextExtent(COLUMNS_LABEL)
     hbox.Add(x,1,flag=wx.EXPAND)
     hbox.AddSpacer(H_SPACER)
     self.columns_ctrl = wx.TextCtrl(self,size=(480,-1))
@@ -125,8 +129,8 @@ class ColScriptDialog(wx.Dialog):
     vbox.AddSpacer(V_SPACER)
 
     hbox = wx.BoxSizer(wx.HORIZONTAL)
-    x = wx.StaticText(self,wx.ID_ANY,label="Script:     ")
     hbox.AddSpacer(H_SPACER)
+    x = wx.StaticText(self,wx.ID_ANY,label=SCRIPT_LABEL,size=label_width)
     hbox.Add(x)
     hbox.AddSpacer(H_SPACER)
     self.script_ctrl = wx.TextCtrl(self,size=(480,-1))
