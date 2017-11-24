@@ -1,2 +1,2 @@
 # colscript
-A bqcsv action module that modifies selected columns using a user-generated python script
+A bqcsv action module that applies a python script to all of the row elements of the specified column or columns. 
