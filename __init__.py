@@ -36,9 +36,9 @@
 #      the header value for the specified column(s)
 #    '''
 #
-#  def updateColumn(value):
+#  def updateColumns(value):
 #    '''
-#      The updateColumn function is called once for each row in the table.
+#      The updateColumns function is called once for each row in the table.
 #
 #      "value" contains a list of the column values for the current row, one 
 #      value for each of the column headers passed into the updateHeaders 
@@ -281,8 +281,8 @@ def loadScript(path):
       if False == hasattr(rv,'updateHeaders'):
         wx.MessageBox('Script is missing the updateHeaders function', 'Error', wx.OK | wx.ICON_ERROR)
         rv = None
-      elif False == hasattr(rv,'updateColumn'):
-        wx.MessageBox('Script is missing the updateColumn function', 'Error', wx.OK | wx.ICON_ERROR)
+      elif False == hasattr(rv,'updateColumns'):
+        wx.MessageBox('Script is missing the updateColumns function', 'Error', wx.OK | wx.ICON_ERROR)
         rv = None
   except ImportError as ex:
     wx.MessageBox('Error importing script (' + path + '): ' + ex.message, 'Error', wx.OK | wx.ICON_INFORMATION)
@@ -308,7 +308,7 @@ def doColScript(table,script,cols,memdb):
             old_values.append(row[old_index])
         for v in row:
           if idx == ci.index:
-            new_values = mod.updateColumn(old_values) 
+            new_values = mod.updateColumns(old_values) 
             for new_value in new_values:
               new_row.append(new_value)
           else:
@@ -316,7 +316,7 @@ def doColScript(table,script,cols,memdb):
           idx += 1
         # Take care of the special "append" case
         if idx == ci.index:
-          new_values = mod.updateColumn(old_values) 
+          new_values = mod.updateColumns(old_values) 
           for new_value in new_values:
             new_row.append(new_value)
         memdb.appendRow(new_row)
